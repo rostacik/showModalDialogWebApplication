@@ -19,11 +19,11 @@
             });
 
             //do we have some value/values?
-            if ((dialogResults !== undefined) && (dialogResults !== null)) {
-                if ((dialogResults.someInput1Value !== undefined) && (dialogResults.someInput1Value !== null)) {
+            if (dialogResults) {
+                if (dialogResults.someInput1Value) {
                     document.getElementById('someInput1').value = dialogResults.someInput1Value;
                 }
-                if ((dialogResults.someInput2Value !== undefined) && (dialogResults.someInput2Value !== null)) {
+                if (dialogResults.someInput2Value) {
                     document.getElementById('someInput2').value = dialogResults.someInput2Value;
                 }
             }

@@ -11,11 +11,11 @@
     <button id="saveButton">save</button>
     <script src="../Scripts/lib.js"></script>
     <script>
-        if ((window.dialogArguments !== undefined) && (window.dialogArguments !== null)) {
-            if ((window.dialogArguments.someInput1Value !== undefined) && (window.dialogArguments.someInput1Value !== null)) {
+        if (window.dialogArguments) {
+            if (window.dialogArguments.someInput1Value) {
                 document.getElementById('someInput1').value = window.dialogArguments.someInput1Value;
             }
-            if ((window.dialogArguments.someInput2Value !== undefined) && (window.dialogArguments.someInput2Value !== null)) {
+            if (window.dialogArguments.someInput2Value) {
                 document.getElementById('someInput2').value = window.dialogArguments.someInput2Value;
             }
         }

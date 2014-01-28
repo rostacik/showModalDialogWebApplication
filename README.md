@@ -22,25 +22,25 @@ will pause JavaScript on the host page and let you continue on the modal one whe
 ```JavaScript
 window.returnValue
 ```
-That can be anything, in our case values from inputs on the modal page. (Small note here : Chrome implemented openModalDialog in a bit different way since it's not modal and you can navigate away - but it will reain open and JavaScript waiting for object to be passed back will be paused until you close the window and only then it can continue).
+That can be anything, in our case values from inputs on the modal page. (Small note here : Chrome implemented openModalDialog in a bit different way since it's not modal and you can navigate away - but it will remain open and JavaScript waiting for object to be passed back will be paused/not hit until you close the window and only then it will continue).
 
-Then JavaScript on original page continues with checking the return values and filling in inputs as needed.   
+Then JavaScript on original page continues with checking the return values and filling in inputs as needed (just in my case of course).   
 
 This sample code was tested on Windows 7 SP1 with IE11 by setting the Document modes from edge (11) down to 5 and with latest versions of FireFox - currently 26 final and Chrome 34 canary - beta.
 
 Small note here :
 =
-I was also testing another code that seems to work, but only in non IE browsers and that is :
+I was also testing another code that seems to work, but only in non IE browsers and that is (self explanatory sample) :
 ```JavaScript
 window.opener.document.getElementById('someID').value = 'some value';
 ```
 If you are targeting everything except IE than you are fine, if not, code above may help you.
 The future :
 =
-How long this will work, that is a good question, because showModalDialog is IE specific stuff and FF and Chrome just had to implement it to make the switch from IE possible for users. But currently Chrome 34 is complaining that : 
+How long this will work is a good question, because showModalDialog is IE specific stuff and FF and Chrome just had to implement it to make the switch from IE possible for users. But currently Chrome 34 is complaining that : 
 
 Chromium is considering deprecating showModalDialog. Please use window.open and postMessage instead.
 
-In this case, postMessage doesnt have to be used, since all of pages are ours, but you would have to use them, if pages would be from different domains.
+In this case, postMessage doesn't have to be used, since all of pages are ours, but you would have to use it, if pages would be from different domains.
 
 More on this here : [http://blog.teamtreehouse.com/cross-domain-messaging-with-postmessage](http://blog.teamtreehouse.com/cross-domain-messaging-with-postmessage "postMessage")  

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>host</title>
+</head>
+<body>
+    <input id="someInput1" type="text" value="default value 1" />
+    <br />
+    <input id="someInput2" type="text" value="default value 2" />
+    <br />
+    <button id="openButton">open modal edit window</button>
+    <script src="../Scripts/lib.js"></script>
+    <script>
+        bindEvent(document.getElementById('openButton'), 'click', function () {
+            //open and send JSON object with data
+            var dialogResults = window.showModalDialog('modalPage.html', {
+                someInput1Value: document.getElementById('someInput1').value,
+                someInput2Value: document.getElementById('someInput2').value
+            });
+
+            //do we have some value/values?
+            if ((dialogResults !== undefined) && (dialogResults !== null)) {
+                if ((dialogResults.someInput1Value !== undefined) && (dialogResults.someInput1Value !== null)) {
+                    document.getElementById('someInput1').value = dialogResults.someInput1Value;
+                }
+                if ((dialogResults.someInput2Value !== undefined) && (dialogResults.someInput2Value !== null)) {
+                    document.getElementById('someInput2').value = dialogResults.someInput2Value;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

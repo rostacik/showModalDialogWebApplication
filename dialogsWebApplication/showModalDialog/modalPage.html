@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>modal page</title>
+</head>
+<body>
+    <input id="someInput1" type="text" value="default value 1" />
+    <br />
+    <input id="someInput2" type="text" value="default value 2" />
+    <br />
+    <button id="saveButton">save</button>
+    <script src="../Scripts/lib.js"></script>
+    <script>
+        if ((window.dialogArguments !== undefined) && (window.dialogArguments !== null)) {
+            if ((window.dialogArguments.someInput1Value !== undefined) && (window.dialogArguments.someInput1Value !== null)) {
+                document.getElementById('someInput1').value = window.dialogArguments.someInput1Value;
+            }
+            if ((window.dialogArguments.someInput2Value !== undefined) && (window.dialogArguments.someInput2Value !== null)) {
+                document.getElementById('someInput2').value = window.dialogArguments.someInput2Value;
+            }
+        }
+
+        bindEvent(document.getElementById('saveButton'), 'click', function () {
+            //JSON object to return
+            window.returnValue = {
+                someInput1Value: document.getElementById('someInput1').value,
+                someInput2Value: document.getElementById('someInput2').value
+            };
+
+            window.close();
+        });
+    </script>
+</body>
+</html>
